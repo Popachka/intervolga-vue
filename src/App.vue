@@ -1,9 +1,15 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <header
+    class="container-fluid mx-auto bg-slate-600 flex flex-col sm:flex-row justify-between items-center p-4"
+  >
+    <router-link to="/" class="text-2xl text-white font-bold p-2">CRUD HERAD</router-link>
+    <nav class="text-white flex items-cetner space-x-4 text-xl">
+      <router-link to="/" class="hover:text-cyan-400">Товары</router-link
+      ><router-link to="/categories" class="hover:text-cyan-400">Категории</router-link>
+    </nav>
+    <div class="w-[200px] hidden md:block"></div>
+  </header>
+  <router-view />
 </template>
 
 <style>
@@ -13,18 +19,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
