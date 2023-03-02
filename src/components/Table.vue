@@ -8,7 +8,12 @@
         >
           {{ item }}
         </th>
-        <th class="border-b font-medium p-4 pl-8 pt-0 text-slate-800 font-bold">Edit</th>
+        <th
+          v-if="items.length > 0"
+          class="border-b font-medium p-4 pl-8 pt-0 text-slate-800 font-bold"
+        >
+          Edit
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -34,8 +39,8 @@ export default {
   name: 'Table',
   data() {
     return {
-      columns: [],
-      items: [],
+      columns: ['id', 'name'],
+      items: [{ id: 1, name: 'VanyAPidor' }],
     };
   },
   computed: {
