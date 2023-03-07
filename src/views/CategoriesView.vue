@@ -7,7 +7,7 @@
 import Layout from '../components/Layout.vue';
 import CategoriesList from '@/components/CategoriesList.vue';
 export default {
-  name: 'GoodsView',
+  name: 'CategoriesView',
   components: {
     Layout,
     CategoriesList,

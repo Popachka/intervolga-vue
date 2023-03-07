@@ -1,7 +1,32 @@
-import httpClient from '@/api';
-const END_POINT = '/goods';
+import Api from '@/api';
 
-const getAllGoods = () => httpClient.get(END_POINT);
-const createGood = (name, cat_id) => httpClient.post(END_POINT, { name, cat_id });
-const deleteGood = (id) => httpClient.delete(`${END_POINT} + /${id}`);
-const putGood = (id) => httpClient.put(`${END_POINT} + /${id}`);
+class Goods extends Api {
+  // list goods
+  goods = () => this.rest('/goods/list.json');
+
+  // delete good for id
+  remove = (id) =>
+    this.rest('/goods/delete-item', {
+      method: 'POST',
+      'Content-Type': 'application/json',
+      body: JSON.stringify({ id }),
+    }).then(() => id);
+
+  // add new good in table
+  add = (good) =>
+    this.rest('/goods/add-item', {
+      method: 'POST',
+      'Content-Type': 'application/json',
+      body: JSON.stringify({ good }),
+    }).then(() => ({ ...good, id: new Date().getTime() }));
+
+  //update good in table
+  update = (good) =>
+    this.rest('/goods/update-item', {
+      method: 'POST',
+      'Content-Type': 'application/json',
+      body: JSON.stringify({ good }),
+    }).then(() => good);
+}
+
+export default new Goods();

@@ -14,7 +14,7 @@ export default {
 </script>
 <style>
 .btn {
-  @apply font-bold py-2 px-4 rounded;
+  @apply font-bold py-2 px-4 rounded shadow-lg;
 }
 .btn-info {
   @apply bg-blue-500 text-white;

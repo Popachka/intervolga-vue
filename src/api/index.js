@@ -1,10 +1,13 @@
-import axios from 'axios';
-const httpClient = axios.create({
-  baseUrl: process.env.VUE_APP_BASE_URL,
-  timeout: 1000, // indicates, 1000ms ie. 1 second
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-export default httpClient;
+class Api {
+  constructor() {
+    this.base = '/rest';
+  }
+  request = async (method, options) => {
+    const url = this.base + method;
+    return fetch(url, options);
+  };
+  rest = async (method, options) => {
+    return this.request(method, options).then((data) => data);
+  };
+}
+export default Api;
