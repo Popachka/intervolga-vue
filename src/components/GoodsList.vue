@@ -3,11 +3,12 @@
     <router-link :to="{ name: 'GoodsEdit' }">
       <Btn :isInfo="true" class="w-[200px]">Добавить</Btn>
     </router-link>
-
+    <Btn class="ml-4" @click="clearFilter" :isDanger="true">Очистить фильтр</Btn>
     <Table
       :onClickEdit="onClickEdit"
       :onClickRemove="onClickRemove"
       :tableHeaders="tableHeaders"
+      :filterForCat="filterForCat"
       :items="items"
     />
   </div>
@@ -18,7 +19,7 @@ import Btn from './Btn.vue';
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { fetchItems, selectItems, removeItem } from '@/store/goods/service';
+import { fetchItems, selectItems, removeItem, setItemsForCat } from '@/store/goods/service';
 export default {
   name: 'GoodsList',
   components: {
@@ -50,6 +51,15 @@ export default {
       onClickEdit: (id) => {
         console.log(id);
         router.push({ name: 'GoodsEdit', params: { id } });
+      },
+      filterForCat: (items, category) => {
+        store.commit(
+          'goods/setFilteredItems',
+          items.filter((item) => item.category === category),
+        );
+      },
+      clearFilter: () => {
+        store.commit('goods/setFilteredItems', []);
       },
     };
   },

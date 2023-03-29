@@ -6,6 +6,10 @@ export const selectItems = (store) => {
   const { getters } = store;
   return getters['goods/items'];
 };
+export const setItems = (store, items) => {
+  const { commit } = store;
+  commit('setItems', items);
+};
 export const removeItem = (store, id) => {
   const { dispatch } = store;
   dispatch('goods/removeItem', id);

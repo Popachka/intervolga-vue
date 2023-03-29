@@ -20,6 +20,7 @@
           v-for="(key, i) of colKeys"
           :key="i"
           class="border-b border-slate-100 pl-8 text-slate-500 p-4 text-left"
+          @click="key['value'] === 'category' ? filterForCat(items, item[key['value']]) : null"
         >
           {{ item[key['value']] }}
         </td>
@@ -40,6 +41,7 @@ export default {
     tableHeaders: Array,
     onClickEdit: Function,
     onClickRemove: Function,
+    filterForCat: Function,
   },
   computed: {
     colKeys() {

@@ -2,7 +2,10 @@ import api from './api';
 
 // initial state
 const state = () => ({
-  items: [{ id: '1', category: 'dads' }],
+  items: [
+    { id: '1', category: 'cat' },
+    { id: '2', category: 'dog' },
+  ],
 });
 
 //getters

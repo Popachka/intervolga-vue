@@ -2,12 +2,16 @@ import api from './api';
 
 // initial state
 const state = () => ({
-  items: [{ id: '1', name: 'dsa', description: 'dsa', price: '1', category: 'dads' }],
+  items: [
+    { id: '1', name: 'dsa', description: 'dsa', price: '1', category: 'cat' },
+    { id: '2', name: 'dsa', description: 'dsa', price: '1', category: 'dog' },
+  ],
+  filteredItems: [],
 });
 
 //getters
 const getters = {
-  items: (state) => state.items,
+  items: (state) => (state.filteredItems.length > 0 ? state.filteredItems : state.items),
   itemsByKey: (state) =>
     state.items.reduce((res, cur) => {
       res[cur['id']] = cur;
@@ -18,6 +22,9 @@ const getters = {
 const mutations = {
   setItems: (state, items) => {
     state.items = items;
+  },
+  setFilteredItems: (state, items) => {
+    state.filteredItems = items;
   },
   setItem: (state, item) => {
     state.items.push(item);

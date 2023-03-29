@@ -8,6 +8,7 @@
       :onClickEdit="onClickEdit"
       :onClickRemove="onClickRemove"
       :tableHeaders="tableHeaders"
+      :filterForCat="filterForCat"
       :items="items"
     />
   </div>
@@ -47,6 +48,9 @@ export default {
       onClickEdit: (id) => {
         console.log(id);
         router.push({ name: 'CategoriesEdit', params: { id } });
+      },
+      filterForCat: (category) => {
+        console.log(category);
       },
     };
   },
